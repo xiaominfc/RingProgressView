@@ -77,8 +77,8 @@ public class RingProgressView extends View {
     private void init() {
         int leftSidePadding = PAINTWIDTH + PADDINGLEFT;
         int topSidePadding = PAINTWIDTH + PADDINGTOP;
-        leftDrawRect = new RectF(leftSidePadding, topSidePadding, CIRCLEWIDTH + PAINTWIDTH, CIRCLEWIDTH + PAINTWIDTH);
-        rightDrawRect = new RectF(leftSidePadding + LINELEGHT, topSidePadding, CIRCLEWIDTH + LINELEGHT + PAINTWIDTH, CIRCLEWIDTH + PAINTWIDTH);
+        leftDrawRect = new RectF(leftSidePadding, topSidePadding, CIRCLEWIDTH + leftSidePadding, CIRCLEWIDTH + topSidePadding);
+        rightDrawRect = new RectF(leftSidePadding + LINELEGHT, topSidePadding, CIRCLEWIDTH + LINELEGHT + leftSidePadding, CIRCLEWIDTH + topSidePadding);
         if (null == startTouchThumb) {
             Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.time_horizhon_thumb_image);
             startTouchThumb = new TouchThumb(-(HALFLINELEGHT + HALFCIRCLEWIDTH), 0);
@@ -292,14 +292,6 @@ public class RingProgressView extends View {
                 int left = point.x - mBitmap.getWidth() / 2;
                 int top = point.y - mBitmap.getHeight() / 2;
 
-                if (point.y > 0) {
-                    top = top - PAINTWIDTH / 2;
-                }
-
-                if (point.x > 0) {
-                    left = left - PAINTWIDTH / 2;
-                }
-                //  Log.d("tag","progress:" + startTouchThumb.getProgress() + " x:" + point.x  + "   y:" + point.y  + "   tmp:" + tmp);
                 canvas.drawBitmap(mBitmap, left, top, new Paint());
             }
         }
